@@ -88,14 +88,14 @@ interface contactinfoProps {
       icon: Mail,
       label: "Email",
       value: "madunecheezechukwu@gmail.com",
-      href: "mailto:hello@johndoe.dev",
+      href: "mailto:madunecheezechukwu@gmail.com",
     },
     {
       icon: FaSquareWhatsapp,
       label: "Whatsapp",
       value: "+234 8139760048",
-      href: "tel:+15551234567",
-      span:'fill-green-700  w-7 h-7'
+      href: `https://wa.me/${phoneNumber}?text=${textMessage}`,
+      span: "fill-green-700  w-7 h-7",
     },
   ];
 
@@ -223,7 +223,7 @@ interface contactinfoProps {
                 whileTap={{ scale: 0.95 }}
                 className="px-6 py-3 font-space bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <Link href={`https://wa.me/${phoneNumber}?text=${textMessage}`}>
+                <Link href="tel:08139760048">
                   Schedule a Call
                 </Link>
               </motion.button>
