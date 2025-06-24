@@ -20,6 +20,7 @@ const Navigation = () => {
     { id: "#home", label: "Home" },
     { id: "#about", label: "About" },
     { id: "#projects", label: "Projects" },
+    { id: "#testimonial", label: "Testimonials" },
     { id: "#contact", label: "Contact" },
   ];
 
@@ -53,12 +54,11 @@ const Navigation = () => {
             <div className="flex items-center gap-2">
               <Image
                 src="https://res.cloudinary.com/dk5mfu099/image/upload/v1750532895/ChatGPT_Image_Jun_21_2025_07_07_33_PM_qjr3ck.png"
-                alt="portfolio-logo"
-                width={40}
-                height={40}
-                className="rounded-full"
+                alt="logo"
+                width={30}
+                height={30}
+                className="rounded-sm"
               />
-              <p>delyteCode</p>
             </div>
 
             {/* Desktop Navigation */}

@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { FaSquareWhatsapp } from "react-icons/fa6";
 import {
   Mail,
   Phone,
@@ -14,29 +17,48 @@ import {
   Calendar,
   LucideProps,
 } from "lucide-react";
+import Link from "next/link";
 
 interface contactinfoProps {
   label: string;
   href: string;
   value: string;
-  icon: React.ForwardRefExoticComponent<
-    Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
-  >;
+  icon: React.ComponentType<any>;
+  span?:string
 }
 
- const Footer: React.FC = () => {
+ const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-
+   const formRef = useRef<HTMLFormElement>(null);
+   
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    emailjs
+      .sendForm(
+        "service_0jx9mai", // from EmailJS dashboard
+        "template_vkv4wyh", // from EmailJS templates
+        formRef.current!,
+        "Aq_1iyqK4MDR4viwa" // from EmailJS account
+      )
+      .then(
+        (result) => {
+          console.log("Email sent:", result.text);
+          toast.success("Message sent successfully!");
+        },
+        (error) => {
+          console.error("Error:", error.text);
+          toast.error("Failed to send message.");
+        }
+      );
 
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -55,9 +77,13 @@ interface contactinfoProps {
       ...prev,
       [e.target.name]: e.target.value,
     }));
-  };
+   };
+   const phoneNumber = "2348139760048"; // Nigeria +234
+   const textMessage = encodeURIComponent(
+     "Hello, I'm interested in your work!"
+   );
 
-  const contactInfo :contactinfoProps[] = [
+  const contactInfo: contactinfoProps[] = [
     {
       icon: Mail,
       label: "Email",
@@ -65,10 +91,11 @@ interface contactinfoProps {
       href: "mailto:hello@johndoe.dev",
     },
     {
-      icon: Phone,
-      label: "Phone",
+      icon: FaSquareWhatsapp,
+      label: "Whatsapp",
       value: "+234 8139760048",
       href: "tel:+15551234567",
+      span:'fill-green-700  w-7 h-7'
     },
   ];
 
@@ -81,7 +108,7 @@ interface contactinfoProps {
   return (
     <section
       id="contact"
-      className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden"
+      className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden w-full"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -107,7 +134,7 @@ interface contactinfoProps {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 font-space">
             Let's Work{" "}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Together
@@ -123,12 +150,12 @@ interface contactinfoProps {
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Information */}
           <motion.div
-            initial={{ opacity: 0, y:50 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 2 }}
           >
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 font-space">
               Get in Touch
             </h3>
 
@@ -141,13 +168,13 @@ interface contactinfoProps {
                   className="flex items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 group"
                 >
                   <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
-                    <info.icon className="w-4 h-4" />
+                    <info.icon className={`w-4 h-4 ${info.span} text-white`} />
                   </div>
                   <div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">
                       {info.label}
                     </div>
-                    <div className="font-semibold text-gray-900 dark:text-white">
+                    <div className="font-semibold text-gray-900 text-sm md:text-[16px] dark:text-white">
                       {info.value}
                     </div>
                   </div>
@@ -157,7 +184,7 @@ interface contactinfoProps {
 
             {/* Social Links */}
             <div>
-              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3 font-space">
                 Follow Me
               </h4>
               <div className="flex space-x-4">
@@ -184,7 +211,7 @@ interface contactinfoProps {
               transition={{ duration: 2, delay: 0.2 }}
               className="mt-12 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl border border-blue-200 dark:border-blue-800"
             >
-              <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+              <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-space">
                 Looking for immediate availability?
               </h4>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -194,9 +221,11 @@ interface contactinfoProps {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="px-6 py-3 font-space bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Schedule a Call
+                <Link href={`https://wa.me/${phoneNumber}?text=${textMessage}`}>
+                  Schedule a Call
+                </Link>
               </motion.button>
             </motion.div>
           </motion.div>
@@ -208,7 +237,7 @@ interface contactinfoProps {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6 ">
+            <form onSubmit={handleSubmit} className="space-y-6 " ref={formRef}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -291,7 +320,7 @@ interface contactinfoProps {
                 disabled={isSubmitting}
                 whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
                 whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                className="w-full py-4 font-space bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               >
                 {isSubmitting ? (
                   <motion.div
@@ -317,4 +346,4 @@ interface contactinfoProps {
     </section>
   );
 };
-export default Footer
+export default Contact

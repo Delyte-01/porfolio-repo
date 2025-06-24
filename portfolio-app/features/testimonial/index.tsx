@@ -129,7 +129,10 @@ export const ReviewCarousel: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900/20 relative overflow-hidden">
+    <section
+      id="testimonial"
+      className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900/20 relative overflow-hidden"
+    >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -154,7 +157,7 @@ export const ReviewCarousel: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 font-space">
             What Clients{" "}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Say
@@ -193,7 +196,7 @@ export const ReviewCarousel: React.FC = () => {
                         className="w-16 h-16 rounded-full object-cover shadow-lg"
                       />
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white font-space">
                           {reviews[currentIndex].name}
                         </h3>
                         <div className="text-gray-600 dark:text-gray-400 flex items-center">

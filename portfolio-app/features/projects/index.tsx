@@ -25,7 +25,7 @@ const projects: ProjectsProps[] = [
       "https://res.cloudinary.com/dk5mfu099/image/upload/v1750670564/Screenshot_of_NeoAI_1_duw3na.jpg",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Gsap"],
     description:
-      "A modern e-commerce admin dashboard with real-time analytics, inventory management, and responsive design.",
+      "Developed a responsive AI-powered landing page for Neo AI, showcasing product features, benefits, and integration use cases.",
     github: "https://github.com/Delyte-01/Neo-Ai",
     live: "https://neo-ai-app.vercel.app/",
   },
@@ -36,7 +36,7 @@ const projects: ProjectsProps[] = [
       "https://res.cloudinary.com/dk5mfu099/image/upload/v1750671816/Screenshot_of_GAMI_FI_ah9xgl.jpg",
     tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     description:
-      "Full-stack task management application with drag-and-drop functionality, user authentication, and team collaboration.",
+      "Implemented modern UI with animations, clean layouts, and optimized performance using React, Tailwind CSS, and Gsap.",
     github: "https://github.com/Delyte-01/gami-fi",
     live: "https://gamifi-net.netlify.app/",
   },
@@ -47,7 +47,7 @@ const projects: ProjectsProps[] = [
       "https://res.cloudinary.com/dk5mfu099/image/upload/v1750672058/OIP.-4TYjnX9aRZuGecN67J8vQHaE8_o1fswo.webp",
     tech: ["React", "Node.js", "MongoDB", "Express"],
     description:
-      "Full-stack task management application with drag-and-drop functionality, user authentication, and team collaboration.",
+      "Built a fully responsive task management web app with features like task creation, status tracking, and deadline reminders",
     github: "https://github.com/yourusername/task-manager",
     live: "https://task-manager-demo.vercel.app",
   },
@@ -60,7 +60,7 @@ const ProjectSection = () => {
       <section id="projects" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-space">
               Featured Projects
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
@@ -90,7 +90,7 @@ const ProjectSection = () => {
                     </div>
 
                     <div className="p-6   flex flex-col justify-center ">
-                      <h3 className="text-xl font-bold mb-2">{project.name}</h3>
+                      <h3 className="text-xl font-bold mb-2 font-space">{project.name}</h3>
                       <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm h-[58px] ">
                         {project.description}
                       </p>

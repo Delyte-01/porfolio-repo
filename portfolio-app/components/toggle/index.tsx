@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+// import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -11,9 +11,22 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useEffect, useState } from "react";
 
 export function ModeToggle() {
-  const { setTheme } = useTheme();
+  const { resolvedTheme,setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  
+  
+ useEffect(() => {
+  setMounted(true);
+}, []);
+
+useEffect(() => {
+  if (mounted && resolvedTheme === "dark") {
+    setTheme("system"); // ✅ safely called inside effect
+  }
+}, [mounted, resolvedTheme]);
 
   return (
     <DropdownMenu>

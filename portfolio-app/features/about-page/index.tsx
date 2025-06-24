@@ -1,6 +1,7 @@
 import { MotionDiv } from '@/components/framer-wrapper';
 import { Button } from '@/components/ui/button';
 import { Code2, FileText, Github } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react'
 
 
@@ -19,7 +20,7 @@ const skills = [
 
 const AboutSection = () => {
   return (
-    <div id='about'>
+    <div id="about">
       {" "}
       {/* About Section */}
       <section
@@ -34,7 +35,7 @@ const AboutSection = () => {
             transition={{ duration: 2, delay: 0.2 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-space">
               About{" "}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Me
@@ -64,23 +65,36 @@ const AboutSection = () => {
               <div className="flex flex-col min-h-[100px] md:flex-row gap-4 md:h-[70px] ">
                 <Button
                   variant="outline"
-                  className="flex items-center gap-2 flex-1 md:h-[50px] cursor-pointer"
+                  className=" flex-1 md:h-[50px] cursor-pointer"
                 >
-                  <Github className="w-4 h-4" />
-                  GitHub
+                  <Link
+                    href="https://github.com/Delyte-01"
+                    className="flex items-center gap-2"
+                  >
+                    <Github className="w-4 h-4" />
+                    GitHub
+                  </Link>
                 </Button>
                 <Button
                   variant="outline"
-                  className="flex items-center gap-2 flex-1 md:h-[50px] cursor-pointer"
+                  className=" flex-1 md:h-[50px] cursor-pointer"
                 >
-                  <FileText className="w-4 h-4" />
-                  Resume
+                  <Link
+                    href="/ezechukwu_sam_Resume.pdf"
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <FileText className="w-4 h-4" />
+                    Resume
+                  </Link>
                 </Button>
               </div>
             </div>
 
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold mb-8">Technical Skills</h3>
+            <div className="space-y-6 font-space">
+              <h3 className="text-2xl font-semibold mb-8 ">Technical Skills</h3>
               {skills.map((skill, index) => (
                 <div key={skill.name} className="space-y-3">
                   <div className="flex items-center justify-between">
