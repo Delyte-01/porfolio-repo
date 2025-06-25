@@ -54,6 +54,9 @@ const HeroSection = () =>
     return () => clearInterval(blinkTimeout);
   }, []);
 
+  const phoneNumber = "2348139760048"; // Nigeria +234
+  const Message = encodeURIComponent("Hello, I'm interested in your work!");
+
   return (
     <div id="home">
       {/* Hero Section */}
@@ -65,11 +68,6 @@ const HeroSection = () =>
 
         <div className="text-center space-y-8 z-10 max-w-4xl mx-auto">
           <div className="space-y-6">
-            {/* <div className="inline-block px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-200 dark:border-blue-800">
-              <span className="text-blue-600 dark:text-blue-400 text-sm font-medium">
-                Available for work
-              </span>
-            </div> */}
             <div className="flex items-center justify-center gap-2">
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -105,7 +103,7 @@ const HeroSection = () =>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4 md:items-center">
             <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg font-medium rounded-sm transform hover:scale-105 transition-all duration-300">
-              <Link href="#contact">Hire Me</Link>
+              <Link href={`https://wa.me/${phoneNumber}?text=${Message}`}>Hire Me</Link>
             </Button>
             <Button
               variant="outline"

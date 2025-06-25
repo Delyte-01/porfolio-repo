@@ -100,9 +100,17 @@ interface contactinfoProps {
   ];
 
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Github, href: "https://github.com/Delyte-01", label: "GitHub" },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/sammy-delyte-0a1224302?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      label: "LinkedIn",
+    },
+    {
+      icon: Twitter,
+      href: " https://x.com/Sammydelyte?t=arT4zY01e4t-9wCcPGB-sA&s=09",
+      label: "Twitter",
+    },
   ];
 
   return (
@@ -224,7 +232,7 @@ interface contactinfoProps {
                 className="px-6 py-3 font-space bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <Link href="tel:08139760048">
-                  Schedule a Call
+                   Call Now
                 </Link>
               </motion.button>
             </motion.div>
