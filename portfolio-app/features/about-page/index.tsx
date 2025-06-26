@@ -80,7 +80,7 @@ const AboutSection = () => {
                   className=" flex-1 md:h-[50px] cursor-pointer"
                 >
                   <Link
-                    href="/ezechukwu_sam_Resume.pdf"
+                    href="/Eze_samuel_delyte_CV.pdf"
                     download
                     target="_blank"
                     rel="noopener noreferrer"

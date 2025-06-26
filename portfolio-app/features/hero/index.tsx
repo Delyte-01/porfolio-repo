@@ -110,7 +110,7 @@ const HeroSection = () =>
               className="border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 px-8 py-6 text-lg font-medium rounded-sm cursor-pointer transform hover:scale-105 transition-all duration-300"
             >
               <Link
-                href="/ezechukwu_sam_Resume.pdf"
+                href="/Eze_samuel_delyte_CV.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"
