@@ -5,6 +5,7 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { MotionDiv } from "@/components/framer-wrapper";
 import Link from "next/link";
+import { Skeleton } from "@/components/ui/skeleton";
 
 
 interface ProjectsProps {
@@ -165,12 +166,12 @@ const ProjectSection = () =>
                 key={`placeholder-${index}`}
               >
                 <div className="h-full w-full gap-1  md:flex flex-col  rounded-lg  group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border-0 px-4 py-10 shadow-lg hidden ">
-                  <div className=" flex-1 bg-blue-900/30 animate-pulse rounded-lg shadow"></div>
-                  <div className=" flex-1 flex-col gap-2 justify-evenly flex">
-                    <div className=" rounded-lg shadow animate-pulse bg-blue-900/15 h-full "></div>
-                    <div className=" w-1/2 h-full rounded-lg shadow animate-pulse bg-blue-900/15"></div>
-                    <div className=" w-1/3 h-full rounded-lg shadow animate-pulse bg-blue-900/15"></div>
-                    <div className=" w-1/4 h-full rounded-lg shadow animate-pulse bg-blue-900/15"></div>
+                  <Skeleton className=" flex-1" />
+                  <div className=" flex-1 flex-col gap-2  flex space-y-2 mt-4">
+                    <Skeleton className="h-6 w-full" />
+                    <Skeleton className="h-10 w-[300px]" />
+                    <Skeleton className="h-6 w-[200px]" />
+                    <Skeleton className="h-6 w-[150px]" />
                   </div>
                 </div>
               </MotionDiv>
