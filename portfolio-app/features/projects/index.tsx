@@ -51,8 +51,24 @@ const projects: ProjectsProps[] = [
     github: "https://github.com/yourusername/task-manager",
     live: "https://task-manager-demo.vercel.app",
   },
+  {
+    id: 4,
+    name: "CineMax Movie App",
+    image:
+      "https://res.cloudinary.com/dk5mfu099/image/upload/v1753439702/Screenshot_of_CineMax_1_nbbdfd.jpg",
+    tech: ["TMDB", "Next.js", "TypeScript", "Tailwind CSS"],
+    description:
+      "Cinemax is a responsive, full-featured movie and TV discovery platform that lets users explore, search, and filter content from  (TMDB) API.",
+    github: "https://github.com/Delyte-01/movie-app",
+    live: "https://cinemax-site.vercel.app/",
+  },
 ];
-const ProjectSection = () => {
+const ProjectSection = () =>
+{
+  const TOTAL_GRID_ITEMS = 6;
+  const projectCount = projects.length;
+  const emptySlots = TOTAL_GRID_ITEMS - projectCount;
+
   return (
     <div id="projects">
       {" "}
@@ -90,7 +106,9 @@ const ProjectSection = () => {
                     </div>
 
                     <div className="p-6   flex flex-col justify-center ">
-                      <h3 className="text-xl font-bold mb-2 font-space">{project.name}</h3>
+                      <h3 className="text-xl font-bold mb-2 font-space">
+                        {project.name}
+                      </h3>
                       <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm h-[58px] ">
                         {project.description}
                       </p>
@@ -135,6 +153,26 @@ const ProjectSection = () => {
                     </div>
                   </CardContent>
                 </Card>
+              </MotionDiv>
+            ))}
+            {/* Placeholder Cards */}
+            {Array.from({ length: emptySlots }).map((_, index) => (
+              <MotionDiv
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 2, delay: 0.5 }}
+                key={`placeholder-${index}`}
+              >
+                <div className="h-full w-full gap-1  md:flex flex-col  rounded-lg  group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border-0 px-4 py-10 shadow-lg hidden ">
+                  <div className=" flex-1 bg-blue-900/30 animate-pulse rounded-lg shadow"></div>
+                  <div className=" flex-1 flex-col gap-2 justify-evenly flex">
+                    <div className=" rounded-lg shadow animate-pulse bg-blue-900/15 h-full "></div>
+                    <div className=" w-1/2 h-full rounded-lg shadow animate-pulse bg-blue-900/15"></div>
+                    <div className=" w-1/3 h-full rounded-lg shadow animate-pulse bg-blue-900/15"></div>
+                    <div className=" w-1/4 h-full rounded-lg shadow animate-pulse bg-blue-900/15"></div>
+                  </div>
+                </div>
               </MotionDiv>
             ))}
           </div>
